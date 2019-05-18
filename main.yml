@@ -21,10 +21,16 @@
   gather_facts: yes
   roles:
     - role: mongodb
+
+- hosts: mongo
+  gather_facts: yes
+  roles:
+    - role: mongo_master
       when: "'mongo_master' in group_names"
 
 - hosts: mongo
   gather_facts: yes
   roles:
-    - role: mongodb
+    - role: mongo_slave
       when: "'mongo_replicas' in group_names"
+

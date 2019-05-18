@@ -1,0 +1,6 @@
+use admin
+db.auth("{{ mongodb_user_admin_name  }}", "{{ mongodb_user_admin_password  }}");
+{% for host in groups['mongo_replicas'] %}
+    rs.add("{{host}}:27017");
+{% endfor %}
+

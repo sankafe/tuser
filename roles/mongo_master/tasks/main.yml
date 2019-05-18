@@ -1,0 +1,14 @@
+---
+
+- name: copy initRS script
+  template: src=initRS.j2 dest=/tmp/initRS.js
+
+- name: init initrs
+  shell: mongo < /tmp/initRS.js
+
+- name: copy addSlave script
+  template: src=addSecondary.j2 dest=/tmp/addSecondary.js
+
+- name: add slaves
+  shell: mongo < /tmp/addSecondary.js
+

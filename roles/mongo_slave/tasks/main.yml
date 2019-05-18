@@ -1,0 +1,4 @@
+---
+
+- name: copy addSlave script
+  template: src=addSecondary.j2 dest=/tmp/addSecondary.js

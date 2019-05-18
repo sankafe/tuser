@@ -37,7 +37,7 @@
     direction: routed
     default: "{{ ufw_default_forward_policy }}"
 
-- name: enable ufw
-  ufw:
-    state: enabled
+#- name: enable ufw
+#  ufw:
+#    state: enabled
 

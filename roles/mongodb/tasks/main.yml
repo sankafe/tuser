@@ -8,3 +8,25 @@
     state: present
     update_cache: yes
 
+- name: Install PyMongo package
+  apt: pkg=python-pymongo state=latest
+
+#- name: create user and database
+#  mongodb_user: "{{item}}"
+#  with_items: "{{mongodb_users}}"
+
+- name: copy mongod.conf
+  copy:
+    src: /home/tuser/repa/roles/mongodb/files/mongod.yml
+    dest: /etc/mongod.conf
+
+
+- name: copy initRS script
+  template: src=mongod.j2 dest=/etc/mongod.conf
+
+#- name: initiate replica set from first primary
+#  shell: mongo < /tmp/initRS.js
+
+- name: start mongod with new conf
+  shell:  killall -9 mongod; mongod --config /etc/mongod.conf --fork
+

@@ -1,0 +1,5 @@
+use admin
+db.auth("{{ mongodb_user_admin_name  }}", "{{ mongodb_user_admin_password  }}");
+rs.add("{{ hostvars[groups['mongo_replicas'][0]].ansible_default_ipv4.address }}:27017");
+rs.add("{{ hostvars[groups['mongo_replicas'][1]].ansible_default_ipv4.address }}:27017");
+

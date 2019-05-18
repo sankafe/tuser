@@ -1,0 +1,19 @@
+storage:
+  engine: wiredTiger
+  dbPath: /var/lib/mongodb
+
+  journal:
+    enabled: true
+
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongod.log
+
+replication:
+  replSetName: "{{mongodb_replication_replset}}"
+  oplogSizeMB: "{{mongodb_replication_oplogsize}}"
+
+net:
+  port: 27017
+  bindIp: 0.0.0.0
