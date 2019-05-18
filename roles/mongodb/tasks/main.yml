@@ -1,0 +1,10 @@
+---
+
+- name: Install MongoDB package
+  apt: 
+    name:
+      - "{{mongodb_package}}"
+      - numactl
+    state: present
+    update_cache: yes
+
